@@ -8,6 +8,13 @@ export const getMissions = query({
   },
 });
 
+export const getMission = query({
+  args: { missionId: v.id("missions") },
+  handler: async (ctx, args) => {
+    return await ctx.db.get(args.missionId);
+  },
+});
+
 export const addNewMissions = mutation({
   args: {},
   handler: async (ctx) => {

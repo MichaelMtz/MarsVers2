@@ -1,4 +1,4 @@
-# Game Dashboard Application
+# Mars Ver2 Game
   
 This is a project built with [Chef](https://chef.convex.dev) using [Convex](https://convex.dev) as its backend.
   

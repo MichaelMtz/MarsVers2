@@ -53,9 +53,9 @@ export default function LeftRail({
       <div className="border-t border-white/20 my-4"></div>
 
       {/* Missions */}
-      <div className="flex-1">
+      <div className="flex-1 game-main-grid-mission-container">
         <h4 className="text-white font-bold mb-4 orbitron">MISSIONS</h4>
-        <div className="space-y-2 overflow-y-auto">
+        <div className="space-y-2 overflow-y-auto game-main-grid-mission-container-list">
           {missions.map((mission) => (
             <button
               key={mission._id}

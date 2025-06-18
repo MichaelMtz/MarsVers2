@@ -60,9 +60,41 @@ body {
   z-index: 0;
 }
 
+/* Mars background */
+.bg-mars {
+  background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 25%, #6b3e2a 50%, #8b4513 75%, #a0522d 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+
+.bg-mars::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 25px 35px, #ff6b35, transparent),
+    radial-gradient(2px 2px at 45px 75px, rgba(255,107,53,0.6), transparent),
+    radial-gradient(1px 1px at 95px 45px, #ff8c42, transparent),
+    radial-gradient(1px 1px at 135px 85px, rgba(255,140,66,0.4), transparent),
+    radial-gradient(2px 2px at 165px 35px, #ff6b35, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: mars-glow 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
 @keyframes twinkle {
   0% { opacity: 0.3; }
   100% { opacity: 1; }
+}
+
+@keyframes mars-glow {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.8; }
 }
 
 /* Glass panel effect */
@@ -76,6 +108,17 @@ body {
   z-index: 1;
 }
 
+/* Mars glass panel effect */
+.mars-glass-panel {
+  background: rgba(139, 69, 19, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(139, 69, 19, 0.4);
+  position: relative;
+  z-index: 1;
+}
+
 /* Orbitron font class */
 .orbitron {
   font-family: 'Orbitron', monospace;
@@ -84,6 +127,12 @@ body {
 /* Game input styling */
 .game-input {
   @apply w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-all backdrop-blur-sm;
+  font-family: 'Orbitron', monospace;
+}
+
+/* Mars input styling */
+.mars-input {
+  @apply w-full px-4 py-3 rounded-lg bg-white/10 border border-red-400/30 text-white placeholder-white/50 focus:border-red-400 focus:ring-1 focus:ring-red-400 outline-none transition-all backdrop-blur-sm;
   font-family: 'Orbitron', monospace;
 }
 
@@ -100,6 +149,19 @@ body {
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
 
+/* Mars button styling */
+.mars-button {
+  @apply px-6 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition-all transform hover:scale-105 shadow-lg;
+  font-family: 'Orbitron', monospace;
+  background: linear-gradient(45deg, #dc2626, #b91c1c);
+  border: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+.mars-button:hover {
+  background: linear-gradient(45deg, #b91c1c, #991b1b);
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+}
+
 /* only use this to update the style of the auth input fields. use a different class for all other input fields */
 .auth-input-field {
   @apply w-full px-4 py-3 rounded-container bg-white border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow shadow-sm hover:shadow;
@@ -108,4 +170,181 @@ body {
 /* only use this to update the style of the auth buttons. use the button class for all other buttons */
 .auth-button {
   @apply w-full px-4 py-3 rounded bg-primary text-white font-semibold hover:bg-primary-hover transition-colors shadow-sm hover:shadow disabled:opacity-50 disabled:cursor-not-allowed;
+}
+.h-screen {
+  height: 90vh;
+  overflow-y: auto;
+}
+.h-32 {
+	height: 45vh;
+}
+.game-main-grid {
+	overflow-y: unset;
+}
+.game-main-grid-mission-container {
+	height: 62vh;
+}
+.game-main-grid-mission-container-list {
+	max-height: clamp(40vh, 40vh + 200px, 57vh);
+}
+.player-middle-section {
+	max-height: 90vh;
+	overflow-y: scroll;
+}
+
+.admin-main-grid {
+	height:96vh;
+	overflow-y:auto;
+}
+.admin-left-rail-container-flex {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+.admin-left-rail-container-user {
+	flex: 0 0 auto;
+	/* height: min(10%, 140px); */
+}
+.admin-left-rail-container-mission {
+	flex: 1;
+}
+.admin-left-rail-container-mission-list {
+	/* max-height: unset;
+	height: 97%;
+	min-height:57%; */
+	max-height: clamp(283px, 52vh, 700px);
+}
+.admin-left-rail-container-admin-btn {
+	flex: 0 0 100px;
+}
+.admin-left-rail-container-logout {
+	flex: 0 0 40px;
+}
+.admin-left-rail-container-grid {
+	display: grid;
+  grid-template-rows: auto auto 1fr auto auto auto;
+}
+@media (max-height:950px) {
+	.admin-left-rail-container-mission-list {
+		max-height: clamp(275px,36vh,400px);
+	}
+}
+.glass-panel {
+	backdrop-filter: blur(1px);
+}
+
+/* MDEditor Mars Theme Customization */
+.w-md-editor {
+  background: transparent !important;
+  border: none !important;
+}
+
+.w-md-editor.w-md-editor-dark {
+  background: transparent !important;
+}
+
+
+.w-md-editor-text-textarea,
+.w-md-editor-text-input,
+.w-md-editor-text {
+  background: transparent !important;
+  color: white !important;
+  font-family: 'Orbitron', monospace !important;
+  border: none !important;
+}
+
+.w-md-editor-toolbar {
+  background: rgba(139, 69, 19, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 107, 53, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.w-md-editor-toolbar button {
+  color: white !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.w-md-editor-toolbar button:hover {
+  background: rgba(255, 107, 53, 0.2) !important;
+}
+
+.w-md-editor-toolbar-divider {
+  background: rgba(255, 107, 53, 0.3) !important;
+}
+
+/* Space Theme MDEditor Markdown Preview */
+.wmde-markdown {
+  background: transparent !important;
+  color: white !important;
+  font-family: 'Orbitron', monospace !important;
+}
+
+.wmde-markdown h1,
+.wmde-markdown h2,
+.wmde-markdown h3,
+.wmde-markdown h4,
+.wmde-markdown h5,
+.wmde-markdown h6 {
+  color: #60a5fa !important;
+  font-family: 'Orbitron', monospace !important;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.3) !important;
+}
+
+.wmde-markdown p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-family: 'Orbitron', monospace !important;
+}
+
+.wmde-markdown strong {
+  color: #fbbf24 !important;
+  font-weight: bold !important;
+}
+
+.wmde-markdown em {
+  color: #a78bfa !important;
+}
+
+.wmde-markdown code {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: #60a5fa !important;
+  padding: 2px 4px !important;
+  border-radius: 4px !important;
+  font-family: 'Orbitron', monospace !important;
+}
+
+.wmde-markdown pre {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(96, 165, 250, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+.wmde-markdown blockquote {
+  border-left: 4px solid #60a5fa !important;
+  background: rgba(96, 165, 250, 0.1) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.wmde-markdown ul,
+.wmde-markdown ol,
+.wmde-markdown li {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.wmde-markdown a {
+  color: #60a5fa !important;
+  text-decoration: underline !important;
+}
+
+.wmde-markdown a:hover {
+  color: #93c5fd !important;
+}
+.w-md-editor {
+	height: unset !important;
+}
+.w-md-editor-show-edit  .w-md-editor-input {
+	height: clamp(250px, 300px + 16vh, 85vh);
+}	
+.add-opacity {
+	background: rgba(139, 69, 19, 0.8);
 }

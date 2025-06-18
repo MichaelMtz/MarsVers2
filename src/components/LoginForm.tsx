@@ -25,8 +25,8 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
     
     try {
       if (isLogin) {
-        const player = await loginPlayer({ name, password });
-        onLogin(player._id);
+        const playerId = await loginPlayer({ name, password });
+        onLogin(playerId);
         toast.success("Welcome back!");
       } else {
         const finalTeamName = isNewTeam ? teamName : selectedTeam;
@@ -101,7 +101,7 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
                   className="game-input"
                 >
                   <option value="">Select a team...</option>
-                  {teams.map((team) => (
+                  {teams.map((team: any) => (
                     <option key={team._id} value={team.name}>
                       {team.name}
                     </option>
